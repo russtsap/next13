@@ -26,6 +26,8 @@ async function updateTodo(id: string, title: string) {
   return prisma.todo.findMany();
 }
 
+console.log();
+
 export default async function Home() {
   const todos = await getTodos();
   return (

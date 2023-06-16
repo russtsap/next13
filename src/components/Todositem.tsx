@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 type TodoItemProps = {
   id: string;
@@ -19,18 +20,19 @@ export function TodoItem({
   deleteTodo,
   updateTodo,
 }: TodoItemProps) {
+  const router = useRouter();
   const [editing, setEditing] = useState(false);
   const [newTitle, setNewTitle] = useState(title);
 
   const handleDelete = async () => {
     await deleteTodo(id);
-    location.reload(); // This will refresh the entire page
+    router.refresh();
   };
 
   const handleUpdate = async () => {
     await updateTodo(id, newTitle);
     setEditing(false);
-    location.reload(); // This will refresh the entire page
+    router.refresh();
   };
 
   return (
