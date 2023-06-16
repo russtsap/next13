@@ -16,14 +16,12 @@ async function deleteTodo(id: string) {
   "use server";
 
   await prisma.todo.delete({ where: { id } });
-  return prisma.todo.findMany();
 }
 
 async function updateTodo(id: string, title: string) {
   "use server";
 
   await prisma.todo.update({ where: { id }, data: { title } });
-  return prisma.todo.findMany();
 }
 
 console.log();
