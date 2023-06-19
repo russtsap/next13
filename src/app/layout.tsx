@@ -1,5 +1,3 @@
-"use client";
-
 import "./globals.css";
 import { Inter } from "next/font/google";
 import Providers from "./providers";
@@ -8,10 +6,6 @@ import ThemeSwitcher from "@/layouts/ThemeStitcher";
 import SessionProvider from "./SessionProvider";
 
 const inter = Inter({ subsets: ["latin"] });
-
-export const metadata = {
-  title: "Todo App",
-};
 
 interface RootLayoutProps {
   children: React.ReactNode;
