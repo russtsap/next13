@@ -37,7 +37,6 @@ export function TodoItem({
     router.refresh();
   };
 
-  console.log(session);
   return (
     <li className="flex gap-2 items-center dark:text-slate-100">
       <input

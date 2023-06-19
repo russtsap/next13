@@ -3,10 +3,6 @@ import { NextResponse } from "next/server";
 
 export default withAuth(
   function middleware(req) {
-    console.log("Request object:", req);
-    console.log("NextAuth object:", req.nextauth);
-    console.log("Token:", req.nextauth.token);
-
     if (
       req.nextUrl.pathname === "/admin-dashboard" &&
       req.nextauth.token?.role !== "admin"
@@ -24,7 +20,6 @@ export default withAuth(
     callbacks: {
       authorized: (params) => {
         let { token } = params;
-        console.log("Authorized callback token:", token);
         return !!token;
       },
     },
