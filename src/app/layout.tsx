@@ -36,6 +36,12 @@ export default function RootLayout({ children }: RootLayoutProps) {
           >
             Profile Page
           </Link>
+          <Link
+            className="px-4 py-2 text-slate-700 hover:text-slate-800 dark:text-slate-100 dark:hover:text-slate-200 transition-colors duration-300"
+            href="/new"
+          >
+            New
+          </Link>
         </nav>
         <SessionProvider>
           <Providers>

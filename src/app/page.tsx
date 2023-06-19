@@ -28,15 +28,8 @@ export default async function Home() {
   const todos = await getTodos();
   return (
     <>
-      <header className="flex justify-between items-center mb-4 dark:text-slate-100">
-        <h1 className="text-2xl">Todos</h1>
-        <Link
-          className={`border border-slate-300 text-slate-300 dark:text-slate-100 px-2 py-1 rounded hover:bg-slate-700 dark:hover:bg-slate-700 focus-within:bg-slate-700 outline-none`}
-          href="/new"
-        >
-          New
-        </Link>
-      </header>
+      <h1 className="text-2xl">Todos</h1>
+
       <ul>
         {todos.map((todo) => (
           <TodoItem
