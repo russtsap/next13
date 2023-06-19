@@ -15,7 +15,7 @@ const SignInModal = ({ isOpen, onClose }: Props) => {
     <div className="fixed z-10 inset-0 overflow-y-auto">
       <div className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
         <div className="fixed inset-0 transition-opacity" aria-hidden="true">
-          <div className="absolute inset-0 bg-gray-500 opacity-75"></div>
+          <div className="absolute inset-0 bg-gray-500 opacity-75 dark:bg-slate-800 dark:opacity-75"></div>
         </div>
 
         <span
@@ -30,7 +30,7 @@ const SignInModal = ({ isOpen, onClose }: Props) => {
             <div className="sm:flex sm:items-start">
               <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
                 <h3
-                  className="text-lg leading-6 font-medium text-gray-900"
+                  className="text-lg leading-6 font-medium text-gray-900 dark:text-slate-100"
                   id="modal-title"
                 >
                   Sign in with
@@ -38,7 +38,7 @@ const SignInModal = ({ isOpen, onClose }: Props) => {
                 <div className="mt-2">
                   <button
                     onClick={() => signIn()}
-                    className="mt-5 w-full px-2 py-2 border border-gray-300 shadow-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                    className="mt-5 w-full px-2 py-2 border border-gray-300 shadow-sm font-medium rounded-md text-gray-700 bg-white dark:bg-slate-800 dark:text-slate-100 hover:bg-gray-50 dark:hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                   >
                     GitHub
                   </button>
@@ -50,7 +50,7 @@ const SignInModal = ({ isOpen, onClose }: Props) => {
             <button
               onClick={onClose}
               type="button"
-              className="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-gray-50 text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
+              className="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-gray-50 dark:bg-slate-800 text-base font-medium text-gray-700 dark:text-slate-100 hover:bg-gray-50 dark:hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
             >
               Cancel
             </button>

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
 
 type TodoItemProps = {
   id: string;
@@ -20,6 +21,7 @@ export function TodoItem({
   deleteTodo,
   updateTodo,
 }: TodoItemProps) {
+  const { data: session } = useSession();
   const router = useRouter();
   const [editing, setEditing] = useState(false);
   const [newTitle, setNewTitle] = useState(title);
@@ -35,8 +37,9 @@ export function TodoItem({
     router.refresh();
   };
 
+  console.log(session);
   return (
-    <li className="flex gap-2 items-center">
+    <li className="flex gap-2 items-center dark:text-slate-100">
       <input
         id={id}
         type="checkbox"
@@ -50,18 +53,22 @@ export function TodoItem({
       >
         {title}
       </label>
-      <button
-        className="text-gray-500 border border-gray-300 px-2 py-1 rounded hover:bg-gray-200 focus:bg-gray-200 outline-none"
-        onClick={() => setEditing(true)}
-      >
-        Edit
-      </button>
-      <button
-        className="text-red-500 border border-red-300 px-2 py-1 rounded hover:bg-red-200 focus:bg-red-200 outline-none"
-        onClick={handleDelete}
-      >
-        Delete
-      </button>
+      {session?.user?.name === "russtsap" && (
+        <>
+          <button
+            className="text-gray-500 border border-gray-300 px-2 py-1 rounded hover:bg-gray-200 dark:hover:bg-gray-700 focus:bg-gray-200 dark:focus:bg-gray-700 outline-none"
+            onClick={() => setEditing(true)}
+          >
+            Edit
+          </button>
+          <button
+            className="text-red-500 border border-red-300 px-2 py-1 rounded hover:bg-red-200 dark:hover:bg-red-700 focus:bg-red-200 dark:focus:bg-red-700 outline-none"
+            onClick={handleDelete}
+          >
+            Delete
+          </button>
+        </>
+      )}
       {editing && (
         <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50">
           <div className="bg-slate-800 p-4 rounded shadow-lg">
@@ -72,16 +79,16 @@ export function TodoItem({
               type="text"
               value={newTitle}
               onChange={(e) => setNewTitle(e.target.value)}
-              className="border bg-slate-800 border-gray-300 p-2 rounded w-full mb-2"
+              className="border bg-slate-800 border-gray-300 p-2 rounded w-full mb-2 text-slate-100"
             />
             <button
-              className="text-gray-500 border border-gray-300 px-2 py-1 rounded hover:bg-gray-200 focus:bg-gray-200 outline-none"
+              className="text-gray-500 border border-gray-300 px-2 py-1 rounded hover:bg-gray-200 dark:hover:bg-gray-700 focus:bg-gray-200 dark:focus:bg-gray-700 outline-none"
               onClick={handleUpdate}
             >
               Save
             </button>
             <button
-              className="text-gray-500 border border-gray-300 px-2 py-1 rounded hover:bg-gray-200 focus:bg-gray-200 outline-none ml-2"
+              className="text-gray-500 border border-gray-300 px-2 py-1 rounded hover:bg-gray-200 dark:hover:bg-gray-700 focus:bg-gray-200 dark:focus:bg-gray-700 outline-none ml-2"
               onClick={() => setEditing(false)}
             >
               Cancel

@@ -29,8 +29,13 @@ export const authOptions: MyAuthOptions = {
     }),
   ],
   callbacks: {
-    async jwt({ token }: { token: JWTCallbackToken }) {
-      token.role = "admin";
+    async jwt({ token, user }: { token: JWTCallbackToken; user: any }) {
+      if (user && user.name === "russtsap") {
+        token.role = "admin";
+      } else if (!token.role) {
+        // set the role to 'member' only if it's not already set
+        token.role = "member";
+      }
       return token;
     },
   },
