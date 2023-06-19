@@ -24,8 +24,6 @@ async function updateTodo(id: string, title: string) {
   await prisma.todo.update({ where: { id }, data: { title } });
 }
 
-console.log();
-
 export default async function Admin() {
   const todos = await getTodos();
   return (
